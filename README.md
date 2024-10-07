@@ -10,10 +10,6 @@ const Greeting = ({ name }) => {
 export default Greeting;
 ```
 
-#### Étapes de conversion :
-1. **Ajouter des types pour les props** : Nous allons utiliser l'interface `Props` pour définir le type du `name`.
-2. **Annoter le type du composant** : Dans un composant fonctionnel, nous indiquons à TypeScript que `Greeting` reçoit des props de type `Props`.
-
 #### Code TypeScript :
 ```typescript
 import React from 'react';
@@ -30,10 +26,6 @@ const Greeting: React.FC<Props> = ({ name }) => {
 
 export default Greeting;
 ```
-
-### Explication :
-- Nous avons créé une interface `Props` pour définir le type des props du composant.
-- `Greeting` est annoté avec `React.FC<Props>` (Functional Component) pour indiquer à TypeScript que ce composant utilise les props de type `Props`.
 
 ---
 
@@ -58,11 +50,6 @@ class Counter extends Component {
 } 
 export default Counter;
 ```
-
-#### Étapes de conversion :
-1. **Ajouter des types pour l'état** : Nous devons définir l'interface pour l'état du composant, qui inclut `count`.
-2. **Annoter le type de `Component`** : Nous allons indiquer à TypeScript que `Counter` est une classe qui hérite de `Component`, et ajouter des types pour les props (même si nous n'avons pas de props ici) et l'état.
-3. **Définir les types des méthodes** : TypeScript va inférer les types pour la méthode `increment`, mais il est bon de l'annoter explicitement.
 
 #### Code TypeScript :
 ```typescript
@@ -97,8 +84,3 @@ class Counter extends Component<{}, State> {
 
 export default Counter;
 ```
-
-### Explication :
-- Nous avons défini une interface `State` pour l'état, spécifiant que `count` est un `number`.
-- Nous avons ajouté `<{}, State>` à la déclaration de la classe `Counter`, où `{}` signifie qu'il n'y a pas de props et `State` est utilisé pour le type de l'état.
-- La méthode `increment` est annotée comme `(): void`, car elle ne retourne rien.
